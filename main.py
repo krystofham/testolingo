@@ -10,7 +10,10 @@ streak_before = 0
 streak_high = 0
 
 message = False  
-random_hash = ''.join(random.choices(string.ascii_letters + string.digits, k=20))
+random_hash = "safe_streak_dekuji_krystufku"
+@app.route('/safe_streak_dekuji_krystufku')
+def safe():
+    return render_template('safe.html')
 
 @app.route('/')
 def home():
@@ -45,9 +48,24 @@ def submit():
         message = False
     else:
         streak_actual = 0
+        streak_before = 0
         message = True
 
     return redirect(url_for('prehled'))
+
+@app.route('/submit_streak', methods=['POST'])
+def submit_streak():
+    global streak_actual, streak_before, streak_high
+    streak = request.form.get('streak')
+
+    if streak is not None:
+        streak_actual = int(streak)
+        streak_before = streak_actual  # Assuming you want to set the previous streak to the current one
+        if streak_high < streak_actual:
+            streak_high = streak_actual
+
+    return redirect(url_for('prehled'))
+
 if __name__ == '__main__':
     print(f"Unikátní odkaz pro záchranu streak: /{random_hash}")
     app.run(host='0.0.0.0', port=5000, debug=True)
