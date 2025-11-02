@@ -1,11 +1,8 @@
 from flask import Flask, render_template, request, url_for, redirect
 from datetime import date
-import smtplib
 from email.mime.text import MIMEText
 import random
-import time
 import string
-from apscheduler.schedulers.background import BackgroundScheduler
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 
