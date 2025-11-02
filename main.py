@@ -5,14 +5,11 @@ import string
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 
-# Streaky
 streak_actual = 0
 streak_before = 0
 streak_high = 0
 
-# Stav dne
-message = False  # True pokud uživatel jedl těstoviny dnes
-# Unikátní odkaz pro záchranu streak
+message = False  
 random_hash = ''.join(random.choices(string.ascii_letters + string.digits, k=20))
 
 @app.route('/')
@@ -36,8 +33,8 @@ def submit():
     odpoved = request.form.get('odpoved')
     password = request.form.get('password')
 
-    #if password != "3.1415926535_pi":
-        #return "Nesprávné heslo."
+    if password != "3.1415926535_pi":
+        return "Nesprávné heslo."
 
     if odpoved == "ano":
         streak_actual = streak_before
