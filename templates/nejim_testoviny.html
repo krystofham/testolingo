@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netěstovináři</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="nav">
+        <a href="{{ url_for('home') }}">Domů</a>
+        <a href="{{ url_for('prehled') }}">Přehled</a>
+        <a href="{{ url_for('nejim_testoviny') }}" class="active">Netěstovináři</a>
+    </div>
+    <div class="streak-box">
+        <div class="streak-number">0</div>
+        <div class="streak-label">Streak resetován</div>
+        <p class="message">Máš čas do konce dne, aby jsi snědl teštoviny. Pošleme ti upozornění.</p>
+        <a href="{{ url_for('home') }}" class="button">Zpět na hlavní stránku</a>
+    </div>
+</body>
+
+</html>

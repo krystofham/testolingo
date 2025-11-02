@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testolingo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="nav">
+        <a href="{{ url_for('home') }}" class="active">Domů</a>
+        <a href="{{ url_for('prehled') }}">Přehled</a>
+    </div>
+    <form action="/submit" method="post">
+        <p>Měl jsi dneska těstoviny?</p>
+        <div class="radio-group">
+            <input type="radio" id="ano" name="odpoved" value="ano" required>
+            <label for="ano">Ano</label><br>
+            <input type="radio" id="ne" name="odpoved" value="ne" required>
+            <label for="ne">Ne</label>
+        </div>
+        <div class="password-group">
+            <input type="password" id="password" name="password" required placeholder="Zadej heslo">
+            <label for="password">Heslo uživatele</label>
+        </div>
+        <button type="submit">Odeslat</button>
+    </form>
+</body>
+
+</html>

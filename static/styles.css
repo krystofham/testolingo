@@ -1,0 +1,250 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f9f7;
+    color: #333;
+}
+
+.nav {
+    background-color: #4CAF50; /* Duolingo Green */
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+}
+
+.nav a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.nav a:hover {
+    background-color: #45a049;
+    color: white;
+}
+
+.nav a.active {
+    background-color: #388e3c;
+    color: white;
+}
+
+/* Streak Box Styles */
+/* Streak Box Styles */
+.boxes {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+    margin: 30px auto;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    padding: 0 10px;
+}
+
+.streak-box {
+    background: linear-gradient(135deg, #4CAF50, #388e3c); /* Duolingo Green Gradient */
+    border-radius: 20px; /* Smoother rounded corners */
+    padding: 40px;
+    text-align: center;
+    max-width: 320px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    flex-grow: 1;
+    flex-basis: 250px;
+    position: relative;
+    overflow: hidden;
+}
+
+.streak-box::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: pulse 3s infinite;
+    transform: translate(-50%, -50%);
+}
+
+.streak-box:hover {
+    transform: translateY(-12px); /* Deeper lift */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #388e3c, #4CAF50); /* Reverse gradient on hover */
+}
+
+.streak-number {
+    font-size: 72px; /* Larger number for impact */
+    font-weight: bold;
+    color: #fff; /* White text for contrast */
+    margin-bottom: 16px;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Text shadow for depth */
+}
+
+.streak-label {
+    font-size: 18px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Text shadow for contrast */
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.1;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(0.8);
+        opacity: 0.1;
+    }
+}
+
+
+/* Form Styles */
+/* Form Styles */
+form {
+    max-width: 450px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+form:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Title/Description */
+form p {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 24px;
+    text-align: center;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+/* Radio Group */
+.radio-group {
+    margin-bottom: 30px;
+}
+
+input[type="radio"] {
+    margin: 10px;
+    accent-color: #4CAF50; /* Duolingo Green */
+    transition: transform 0.2s ease;
+}
+
+input[type="radio"]:hover {
+    transform: scale(1.1);
+}
+
+/* Password Field */
+input[type="password"] {
+    width: 100%;
+    padding: 16px;
+    margin: 12px 0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="password"]:focus {
+    border-color: #4CAF50; /* Duolingo Green */
+    outline: none;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.2);
+}
+
+input[type="password"]::placeholder {
+    color: #888;
+}
+
+/* Label */
+label {
+    color: #555;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+/* Button */
+button {
+    background-color: #4CAF50; /* Duolingo Green */
+    color: white;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: #388e3c;
+    transform: scale(1.05);
+}
+
+/* Button active state */
+button:active {
+    transform: scale(0.98);
+}
+
+/* Input Focus Animation */
+input[type="password"]:focus,
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Form */
+@media (max-width: 768px) {
+    form {
+        padding: 20px;
+    }
+
+    form p {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+
+    input[type="password"] {
+        font-size: 14px;
+    }
+}
+a {
+    text-decoration: none;
+}

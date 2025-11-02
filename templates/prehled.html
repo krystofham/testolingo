@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Přehled</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <a href="{{ url_for('home') }}">Domů</a>
+        <a href="{{ url_for('prehled') }}" class="active">Přehled</a>
+    </div>
+    <div class="boxes">
+        <div class="streak-box">
+            <div class="streak-number">{{ streak_actual }}</div>
+            <div class="streak-label">Aktuální streak</div>
+        </div>
+
+        <div class="streak-box">
+            <div class="streak-number">{{ streak_high }}</div>
+            <div class="streak-label">Nejdelší streak</div>
+        </div>
+
+        <div class="streak-box">
+            <div class="streak-number">{{ streak_before }}</div>
+            <div class="streak-label">Dnešní streak</div>
+        </div>
+    </div>
+</body>
+
+</html>
