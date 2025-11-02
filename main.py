@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, url_for, redirect
 from datetime import date
-from email.mime.text import MIMEText
 import random
 import string
 
