@@ -47,10 +47,29 @@ def submit():
             streak_high = streak_actual
         message = False
     else:
+        return redirect(url_for('sure'))
+
+    return redirect(url_for('prehled'))
+@app.route('/sure')
+def sure():
+    return render_template('sure.html')
+@app.route('/urcite', methods=['POST'])
+def urcite():
+    global streak_actual, streak_before, streak_high, message
+    odpoved = request.form.get('odpoved')
+    if odpoved == "ano":
+        streak_actual = streak_before
+        streak_actual += 1
+        streak_before += 1
+        if streak_high < streak_actual:
+            streak_high = streak_actual
+        message = False
+        return redirect(url_for('prehled'))
+    elif odpoved == "ne":
         streak_actual = 0
         streak_before = 0
         message = True
-
+        return redirect(url_for('nejim_testoviny'))
     return redirect(url_for('prehled'))
 
 @app.route('/submit_streak', methods=['POST'])
@@ -67,5 +86,4 @@ def submit_streak():
     return redirect(url_for('prehled'))
 
 if __name__ == '__main__':
-    print(f"Unikátní odkaz pro záchranu streak: /{random_hash}")
     app.run(host='0.0.0.0', port=5000, debug=True)
