@@ -4,12 +4,12 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f4f9f7;
-    color: #333;
+    background-color: #f5ce7f;
+    color: #100440;
 }
 
 .nav {
-    background-color: #4CAF50; /* Duolingo Green */
+    background-color: #f7b0e7; /* Duolingo Green */
     overflow: hidden;
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -17,10 +17,9 @@ body {
     border-bottom-right-radius: 8px;
 
 }
-
 .nav a {
+    color: black;
     float: left;
-    color: white;
     text-align: center;
     padding: 14px 20px;
     text-decoration: none;
@@ -33,13 +32,14 @@ body {
 }
 
 .nav a:hover {
-    background-color: #45a049;
-    color: white;
+    background-color: #f5ce7f;
+    color: #100440
+;
 }
 
 .nav a.active {
-    background-color: #388e3c;
-    color: white;
+    background-color: #f5ce7f;
+    color: #100440;
 }
 
 /* Streak Box Styles */
@@ -55,13 +55,13 @@ body {
 }
 
 .streak-box {
-    background: linear-gradient(135deg, #4CAF50, #388e3c); /* Duolingo Green Gradient */
+    background: linear-gradient(135deg, #f5ce7f, #f7b0e7); /* Duolingo Green Gradient */
     border-radius: 20px; /* Smoother rounded corners */
     padding: 40px;
     text-align: center;
     max-width: 320px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
     flex-grow: 1;
     flex-basis: 250px;
     position: relative;
@@ -84,7 +84,7 @@ body {
 .streak-box:hover {
     transform: translateY(-12px); /* Deeper lift */
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(135deg, #388e3c, #4CAF50); /* Reverse gradient on hover */
+    background: linear-gradient(135deg, #f5ce7f, #f7b0e7); /* Reverse gradient on hover */
 }
 
 .streak-number {
@@ -157,7 +157,7 @@ form p {
 
 input[type="radio"] {
     margin: 10px;
-    accent-color: #4CAF50; /* Duolingo Green */
+    accent-color: #f7b0e7; /* Duolingo Green */
     transition: transform 0.2s ease;
 }
 
@@ -178,7 +178,7 @@ input[type="password"] {
 }
 
 input[type="password"]:focus {
-    border-color: #4CAF50; /* Duolingo Green */
+    border-color: #f7b0e7; /* Duolingo Green */
     outline: none;
     box-shadow: 0 0 10px rgba(76, 175, 80, 0.2);
 }
@@ -197,7 +197,7 @@ label {
 
 /* Button */
 button {
-    background-color: #4CAF50; /* Duolingo Green */
+    background-color: #f7b0e7; /* Duolingo Green */
     color: white;
     padding: 16px 24px;
     border: none;
@@ -212,7 +212,7 @@ button {
 }
 
 button:hover {
-    background-color: #388e3c;
+    background-color: #f7b0e7;
     transform: scale(1.05);
 }
 
