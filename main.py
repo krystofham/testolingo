@@ -55,29 +55,6 @@ def submit():
         message = True
 
     return redirect(url_for('prehled'))
-
-def send_email(subject, body, to_email):
-    msg = MIMEText(body)
-    msg['Subject'] = subject
-    msg['From'] = "krystof.ham@volny.cz"
-    msg['To'] = to_email
-
-    with smtplib.SMTP_SSL('smtp.volny.cz', 465) as server:
-        server.login("krystof.ham@volny.cz", "Krystof26122009")
-        server.sendmail("krystof.ham@volny.cz", to_email, msg.as_string())
-
-def check_sent_mail():
-    global message
-    current_hour = int(time.strftime('%H', time.localtime()))
-    if message :
-        send_email("Streak Update", "Your streak is now 10.", "2612kiki@gmail.com")
-        print("Email sent!")
-
-# Spouštění každou hodinu pomocí APScheduleru
-scheduler = BackgroundScheduler()
-scheduler.add_job(func=check_sent_mail, trigger="interval", hours=1)
-scheduler.start()
-
 if __name__ == '__main__':
     print(f"Unikátní odkaz pro záchranu streak: /{random_hash}")
     app.run(host='0.0.0.0', port=5000, debug=True)
