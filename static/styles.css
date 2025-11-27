@@ -60,7 +60,7 @@ body {
     padding: 40px;
     text-align: center;
     max-width: 320px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     flex-grow: 1;
     flex-basis: 250px;
