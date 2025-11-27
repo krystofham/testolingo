@@ -157,7 +157,8 @@ form p {
 
 input[type="radio"] {
     margin: 10px;
-    accent-color: #f7b0e7; /* Duolingo Green */
+    padding: 2px;
+    accent-color: #f7b0e7;
     transition: transform 0.2s ease;
 }
 
