@@ -5,7 +5,9 @@ Webová aplikace pro sledování denní řady uživatele.
 Testolingo umožňuje uživatelům zaznamenávat, kdy sní těstovinu a sleduje aktuální a maximální skóre.
 
 ---
-
+## Lighthouse
+- 100 Performance, Accesibility, Best practices, SEO
+[PageSpeed Insights – Mobile](https://pagespeed.web.dev/analysis/https-krystofham-pythonanywhere-com/mp1a1kuae6?form_factor=mobile)
 ## Funkce
 - Sleduje denní řadu (streak)  
 - Počítá aktuální skóre  
