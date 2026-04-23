@@ -1,16 +1,22 @@
 from flask import Flask, render_template, request, url_for, redirect
-from datetime import date
-import random
-import string
+import json
+from pathlib import Path
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 
-streak_actual = 0
-streak_before = 0
-streak_high = 0
+DATA_FILE = Path("streak_data.json")
 
-message = False  
-random_hash = "safe_streak_dekuji_krystufku"
+def load_data():
+    if DATA_FILE.exists():
+        with open(DATA_FILE, "r") as f:
+            return json.load(f)
+    return {"streak_actual": 0, "streak_before": 0, "streak_high": 0, "message": False}
+
+def save_data(data):
+    with open(DATA_FILE, "w") as f:
+        json.dump(data, f)
+
+
 @app.route('/safe_streak_dekuji_krystufku')
 def safe():
     return render_template('safe.html')
@@ -25,14 +31,15 @@ def nejim_testoviny():
 
 @app.route('/prehled')
 def prehled():
+    data = load_data()
     return render_template('prehled.html',
-                           streak_actual=streak_actual,
-                           streak_before=streak_before,
-                           streak_high=streak_high)
+                           streak_actual=data["streak_actual"],
+                           streak_before=data["streak_before"],
+                           streak_high=data["streak_high"])
 
 @app.route('/submit', methods=['POST'])
 def submit():
-    global streak_actual, streak_before, streak_high, message
+    data = load_data()
     odpoved = request.form.get('odpoved')
     password = request.form.get('password')
 
@@ -40,48 +47,52 @@ def submit():
         return "Nesprávné heslo."
 
     if odpoved == "ano":
-        streak_actual = streak_before
-        streak_actual += 1
-        streak_before += 1
-        if streak_high < streak_actual:
-            streak_high = streak_actual
-        message = False
+        data["streak_actual"] = data["streak_before"] + 1
+        data["streak_before"] = data["streak_actual"]
+        if data["streak_high"] < data["streak_actual"]:
+            data["streak_high"] = data["streak_actual"]
+        data["message"] = False
+        save_data(data)
+        return redirect(url_for('prehled'))
     else:
         return redirect(url_for('sure'))
 
-    return redirect(url_for('prehled'))
 @app.route('/sure')
 def sure():
     return render_template('sure.html')
+
 @app.route('/urcite', methods=['POST'])
 def urcite():
-    global streak_actual, streak_before, streak_high, message
+    data = load_data()
     odpoved = request.form.get('odpoved')
+
     if odpoved == "ano":
-        streak_actual = streak_before
-        streak_actual += 1
-        streak_before += 1
-        if streak_high < streak_actual:
-            streak_high = streak_actual
-        message = False
+        data["streak_actual"] = data["streak_before"] + 1
+        data["streak_before"] = data["streak_actual"]
+        if data["streak_high"] < data["streak_actual"]:
+            data["streak_high"] = data["streak_actual"]
+        data["message"] = False
+        save_data(data)
         return redirect(url_for('prehled'))
     elif odpoved == "ne":
-        streak_actual = 0
-        streak_before = 0
-        message = True
+        data["streak_actual"] = 0
+        data["streak_before"] = 0
+        data["message"] = True
+        save_data(data)
         return redirect(url_for('nejim_testoviny'))
     return redirect(url_for('prehled'))
 
 @app.route('/submit_streak', methods=['POST'])
 def submit_streak():
-    global streak_actual, streak_before, streak_high
+    data = load_data()
     streak = request.form.get('streak')
 
     if streak is not None:
-        streak_actual = int(streak)
-        streak_before = streak_actual  # Assuming you want to set the previous streak to the current one
-        if streak_high < streak_actual:
-            streak_high = streak_actual
+        data["streak_actual"] = int(streak)
+        data["streak_before"] = data["streak_actual"]
+        if data["streak_high"] < data["streak_actual"]:
+            data["streak_high"] = data["streak_actual"]
+        save_data(data)
 
     return redirect(url_for('prehled'))
 
