@@ -1,41 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
+<html lang="cs"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testolingo</title>
+    <link rel="preload" href="{{ url_for('static', filename='styles.css') }}" as="style">
+    <link rel="preload" href="static/testovina_yap.png" as="image" fetchpriority="high">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <meta name="description" content="Testolingo – procvičuj a testuj své jazykové znalosti">
     <meta name="theme-color" content="#f7b0e7">
     <meta name="author" content="Kryštof Ham">
     <meta property="og:title" content="Testolingo">
     <meta property="og:description" content="Denní streak těstovin">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="website"> 
 </head>
 
 <body>
-    <div class="nav">
-        <a href="{{ url_for('home') }}" class="active">Domů</a>
+   <nav class="nav"> <a href="{{ url_for('home') }}" class="active">Domů</a>
         <a href="{{ url_for('prehled') }}">Přehled</a>
-    </div>
+    </nav>
     <main>
-    <form action="/submit" method="post">
-        <img src="static/testovina_yap.png" alt="těstovina" height="400">
+        <form action="/submit" method="post">
+            <img src="static/testovina_yap.png" 
+                 alt="těstovina" 
+                 width="400" 
+                 height="400" 
+                 fetchpriority="high"
+                 decoding="async">
 
-        <div class="radio-group">
-            <input type="radio" id="ano" name="odpoved" value="ano" required>
-            <label for="ano">Ano</label><br>
-            <input type="radio" id="ne" name="odpoved" value="ne" required>
-            <label for="ne">Ne</label>
-        </div>
-        <div class="password-group">
-            <input type="password" id="password" name="password" required placeholder="Zadej heslo">
-            <label for="password">Heslo uživatele</label>
-        </div>
-        <button type="submit">Odeslat</button>
-    </form>
+            <div class="radio-group">
+                <input type="radio" id="ano" name="odpoved" value="ano" required>
+                <label for="ano">Ano</label>
+                <input type="radio" id="ne" name="odpoved" value="ne" required>
+                <label for="ne">Ne</label>
+            </div>
+
+            <div class="password-group">
+                <input type="password" id="password" name="password" required placeholder="Zadej heslo">
+                <label for="password">Heslo uživatele</label>
+            </div>
+
+            <button type="submit">Odeslat</button>
+        </form>
     </main>
 </body>
-
 </html>
