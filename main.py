@@ -1,8 +1,14 @@
 from flask import Flask, render_template, request, url_for, redirect
 import json
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
+
+PASSWORD = os.getenv("STREAK_PASSWORD")
 
 DATA_FILE = Path("streak_data.json")
 
@@ -43,7 +49,7 @@ def submit():
     odpoved = request.form.get('odpoved')
     password = request.form.get('password')
 
-    if password != "3.1415926535_pi":
+    if password != PASSWORD:
         return "Nesprávné heslo."
 
     if odpoved == "ano":
