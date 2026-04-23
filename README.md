@@ -1,7 +1,7 @@
 # Testolingo
 
 Webová aplikace pro sledování denní řady uživatele.
-
+Vývoj ukončen.
 Testolingo umožňuje uživatelům zaznamenávat, kdy sní těstovinu a sleduje aktuální a maximální skóre.
 
 ---
